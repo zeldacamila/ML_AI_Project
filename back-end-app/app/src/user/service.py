@@ -1,5 +1,5 @@
-#Logic for Users, It is similiar as CRUD but only for USERS
-from models import User
+# Logic for Users, It is similar as CRUD but only for USERS
+from app.src.models import User
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
@@ -18,9 +18,7 @@ def get_password_hash(password):
 
 def create_user(db: Session, user: UserCreate):
     hashed_password = get_password_hash(user.password)
-    db_user = User(
-        username=user.username, password=hashed_password, email=user.email
-    )
+    db_user = User(username=user.username, password=hashed_password, email=user.email)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
