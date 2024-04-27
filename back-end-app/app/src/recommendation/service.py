@@ -1,6 +1,6 @@
-#Logic for Recommendation, It is similiar as CRUD but only for Recommendation
-from models import Recommendation
-from schemas import RecommendationCreate
+# Logic for Recommendation, It is similiar as CRUD but only for Recommendation
+from app.src.models import Recommendation
+from .schemas import RecommendationCreate
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
