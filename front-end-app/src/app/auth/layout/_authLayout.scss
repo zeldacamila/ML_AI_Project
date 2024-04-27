@@ -1,0 +1,84 @@
+@import "../../../styles/settings";
+
+.authLayout {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color1;
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        2em
+    );
+
+    &__logo {
+        width: 100%;
+        max-width: 5em;
+        @include displayFlex(
+            center,
+            center,
+            none,
+            none,
+            0
+        );
+        
+        img {
+            width: 100%;
+            filter: drop-shadow(0 0 20px rgba( 131, 80, 197, 0.5 ));
+        }
+
+    }
+
+    &__texts {
+        width: 100%;
+        max-width: 50em;
+        @include displayFlex(
+            center,
+            center,
+            column,
+            none,
+            1.5em
+        );
+
+        &__title {
+            width: 100%;
+            @include displayFlex(
+                center,
+                center,
+                column,
+                none,
+                0
+            );
+
+            h1 {
+                color: $color2;
+                font-family: $mainFont;
+                font-weight: 700;
+                font-size: 4em;
+                line-height: 1.2;
+            }
+
+        }
+
+        &__subtitle {
+            width: 60%;
+            @include displayFlex(
+                center,
+                center,
+                none,
+                none,
+                0
+            );
+
+            p {
+                color: $color3;
+                font-family: $mainFont;
+                font-weight: 400;
+                font-size: 1em;
+                text-align: center;
+            }
+        }
+    }
+}

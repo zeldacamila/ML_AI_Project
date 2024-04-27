@@ -1,0 +1,48 @@
+@import "../../../styles/settings";
+
+.dashboard {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color1;
+
+    @include displayFlex(
+        center,
+        flex-start,
+        column,
+        none,
+        0
+    );
+
+    &__container {
+        width: 100%;
+        max-width: 90em;
+        height: calc(100% - 5.6em);
+        padding: 2em 1em 2em 1em;
+        box-sizing: border-box;
+
+        @include displayFlex(
+            flex-start,
+            center,
+            none,
+            none,
+            1em
+        );
+
+        &__inputsChat {
+            width: calc(100% - 20em);
+            height: 50em;
+            border: 1px solid $color3;
+            border-radius: 10px;
+            padding: 1em;
+            box-sizing: border-box;
+
+            @include displayFlex(
+                center,
+                center,
+                column,
+                none,
+                0.5em
+            );
+        }
+    }
+}

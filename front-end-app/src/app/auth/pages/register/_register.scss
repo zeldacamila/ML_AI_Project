@@ -1,0 +1,92 @@
+@import "../../../../styles/settings";
+
+.registerPage {
+    width: 100%;
+    max-width: 25em;
+    padding: 2em;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background-color: $color7;
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        1.5em
+    );
+
+    &__titles {
+        width: 100%;
+
+        @include displayFlex(
+            center,
+            center,
+            column,
+            none,
+            0
+        );
+
+        h3{
+            font-family: $mainFont;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: $color2;
+        }
+
+        p {
+            font-family: $mainFont;
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: $color5;
+        }
+    }
+    &__inputs {
+        width: 100%;
+
+        @include displayFlex(
+            center,
+            center,
+            column,
+            none,
+            0.8em
+        );
+    }
+
+    &__buttons {
+        width: 100%;
+
+        @include displayFlex(
+            center,
+            flex-end,
+            none,
+            none,
+            0.5em
+        );
+
+        button:nth-child(1) {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            font-family: $mainFont;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: $color4;
+            text-decoration: underline;
+        }
+
+        button:nth-child(2) {
+            background-color: $color4;
+            padding: 0.7em 2.5em 0.7em 2.5em;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+
+            font-family: $mainFont;
+            font-size: 0.8em;
+            font-weight: 500;
+            color: $color2;
+        }
+    }
+}

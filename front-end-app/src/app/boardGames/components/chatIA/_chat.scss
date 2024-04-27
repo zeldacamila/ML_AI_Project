@@ -1,0 +1,87 @@
+@import "../../../../styles/settings";
+
+.chatAI {
+    width: 100%;
+    height: calc(100% - 20em);
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        0.5em
+    );
+
+    &__chat {
+        width: 100%;
+        height: 100%;
+        padding: 1em 0.5em 1em 0em;
+        box-sizing: border-box;
+        overflow-y: scroll;
+
+        @include displayFlex(
+            center,
+            flex-start,
+            column,
+            none,
+            1.5em
+        );
+
+        /* Estilos para Chrome, Safari y otros navegadores webkit */
+        &::-webkit-scrollbar {
+            width: 7px; /* Ancho del scrollbar */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent; /* Color del fondo del track */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $color4; /* Color del thumb (la parte móvil del scrollbar) */
+            border-radius: 6px; /* Radio de borde del thumb */
+        }
+    }
+
+    &__button {
+        width: 100%;
+        padding: 0.5em;
+        box-sizing: border-box;
+        border: 1px solid $color4;
+        border-radius: 5px;
+        background-color: $color10;
+
+        @include displayFlex(
+            center,
+            center,
+            none,
+            none,
+            0.5em
+        );
+
+        input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            background-color: transparent;
+
+            font-family: $mainFont;
+            font-size: 0.8em;
+            font-weight: 400;
+            color: $color2;
+        }
+
+        button {
+            background-color: $color4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            padding: 0.5em 2.5em 0.5em 2.5em;
+            font-family: $mainFont;
+            font-size: 0.8em;
+            font-weight: 400;
+            color: $color2;
+        }
+    }
+}

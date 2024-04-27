@@ -1,0 +1,1 @@
+export type typeContextTextsChat = { type: string, nameEntity: string, content: string }; 

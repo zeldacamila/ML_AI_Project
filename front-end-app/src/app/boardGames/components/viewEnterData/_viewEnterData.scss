@@ -1,0 +1,69 @@
+@import "../../../../styles/settings";
+
+.viewEnterData {
+    width: 100%;
+    height: 20em;
+    padding: 1em;
+    box-sizing: border-box;
+    border: 1px solid $color3;
+    border-radius: 10px;
+    background-color: $color10;
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        1em
+    );
+
+    h1 {
+        font-family: $mainFont;
+        font-size: 2em;
+        font-weight: 500;
+        color: $color2;
+    }
+
+    span {
+        color: $color4;
+        font-weight: 600;
+    }
+
+    &__containerInputs {
+        width: 100%;
+        height: 12em;
+
+        @include displayFlex(
+            center,
+            center,
+            none,
+            wrap,
+            2em
+        );
+    }
+
+    &__containerButton {
+        width: 100%;
+
+        @include displayFlex(
+            center,
+            flex-end,
+            none,
+            none,
+            0
+        );
+
+        button {
+            background-color: $color4;
+            padding: 0.5em 2em 0.5em 2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            font-family: $mainFont;
+            font-size: 0.8em;
+            font-weight: 500;
+            color: $color2;
+        }
+    }
+}
