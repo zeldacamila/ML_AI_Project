@@ -1,5 +1,5 @@
 # Endpoints for user
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.core.db_config import SessionLocal
@@ -18,7 +18,7 @@ def get_db():
         db.close()
 
 
-@rec_router.post("/", response_model=schemas.Recommendation, status_code=201)
+@rec_router.post("/", status_code=201)
 def create_recommendation(
     user_id: str,
     recommendation: schemas.RecommendationCreate,
@@ -31,5 +31,5 @@ def create_recommendation(
 
 @rec_router.get("/user/{userId}")
 def read_user_recommendations(userId: str, db: Session = Depends(get_db)):
-    recommendations = service.get_recommendations_by_user_id(db, user_id=userId)
+    recommendations = service.get_recommendations_by_user_id(db, user_id=userId).all()
     return {"userId": userId, "recommendations": recommendations}
