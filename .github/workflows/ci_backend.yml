@@ -72,6 +72,8 @@ jobs:
             ${{ steps.commit.outputs.short }}
 
       - name: Build, tag and push Docker image
+        env:
+          IMAGE_TAG: ${{ steps.commit.outputs.short }}
         uses: docker/build-push-action@v5
         with:
           context: ./back-end-app
