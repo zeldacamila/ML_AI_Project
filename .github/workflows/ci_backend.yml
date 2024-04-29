@@ -75,9 +75,6 @@ jobs:
         env:
           IMAGE_TAG: ${{ steps.commit.outputs.short }}
         uses: docker/build-push-action@v5
-        env:
-          IMAGE_TAG: ${{ steps.commit.outputs.short }}
-        uses: docker/build-push-action@v5
         with:
           context: ./back-end-app
           push: true
