@@ -2,12 +2,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-DB_USERNAME = "test_db"
-DB_PASSWORD = "test123"
-DB_HOST = "localhost"
-DB_NAME = "test"
+DB_USERNAME_TEST = "test_db"
+DB_PASSWORD_TEST = "test123"
+DB_HOST_TEST = "localhost"
+DB_NAME_TEST = "test"
 
-DATABASE_URL = f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+DATABASE_URL = f"postgresql://{DB_USERNAME_TEST}:{DB_PASSWORD_TEST}@{DB_HOST_TEST}/{DB_NAME_TEST}"
 
 engine = create_engine(
     DATABASE_URL,

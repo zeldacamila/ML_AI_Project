@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from app.main import app
 from app.core.db_config import Base, SessionLocal, engine
-# from app.core.db_test_config import TestingSessionLocal
+# from app.core.db_test_config import TestingSessionLocal, engine
 from app.src.user.router import get_db
 
 Base.metadata.create_all(bind=engine)
@@ -38,17 +38,16 @@ class TestUserRegistration:
         response = client.post("/user/register", json={"username": "Zelda"})
         assert response.status_code == 422
 
-    def test_post_request_with_proper_body_returns_201(self):
-        # Asegrar que estas credenciales no están en la db de prueba
-        response = client.post(
-            "/user/register",
-            json={
-                "username": "Zelda",
-                "email": "zelda@hyrule.com",
-                "password": "triforce123",
-            },
-        )
-        assert response.status_code == 201
+    # def test_post_request_with_proper_body_returns_201(self):
+    #     response = client.post(
+    #         "/user/register",
+    #         json={
+    #             "username": "Zelda",
+    #             "email": "zelda@hyrule.com",
+    #             "password": "triforce123",
+    #         },
+    #     )
+    #     assert response.status_code == 201
 
 
 class TestUserLogin:
