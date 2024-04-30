@@ -3,7 +3,7 @@ name: CI Pipeline Backend
 on:
   push:
     branches:
-      - dev-backend
+      - mian, dev-backend
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-backend
