@@ -43,7 +43,7 @@ class TestUserRegistration:
             "/user/register",
             json={
                 "username": "Zelda",
-                "email": "zelda@hyruleee.com",
+                "email": "zelda@hyrule.com",
                 "password": "triforce123",
             },
         )
