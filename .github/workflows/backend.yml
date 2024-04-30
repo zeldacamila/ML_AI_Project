@@ -76,7 +76,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Set short git commit SHA
