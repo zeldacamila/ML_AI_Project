@@ -39,7 +39,6 @@ class TestUserRegistration:
         assert response.status_code == 422
 
     def test_post_request_with_proper_body_returns_201(self):
-        # Asegrar que estas credenciales no están en la db de prueba
         response = client.post(
             "/user/register",
             json={
