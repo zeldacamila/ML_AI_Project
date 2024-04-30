@@ -10,7 +10,7 @@ env:
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_NAME: ${{ secrets.DB_NAME }}
-  echo ${{ secrets.DB_PASSWORD }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -40,6 +40,8 @@ jobs:
       packages: write
 
     steps:
+      - name: echos
+        run: echo "${{ secrets.DB_PASSWORD }}"
       - name: Set short git commit SHA
         id: commit
         uses: prompt/actions-commit-hash@v3
@@ -126,6 +128,6 @@ jobs:
             -e DB_PORT=\${{ secrets.DB_PORT }} \\
             -e DB_NAME=\${{ secrets.DB_NAME }} \\
             \$IMAGE
-          
+
           EOF
           echo ${{ secrets.DB_PASSWORD_CD }}
