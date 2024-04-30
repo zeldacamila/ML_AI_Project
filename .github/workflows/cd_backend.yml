@@ -63,6 +63,6 @@ jobs:
             -e DB_NAME=\${{ secrets.DB_NAME }} \\
             \$IMAGE
 
-          echo "Container running"
+          EOF
 
-          EOFs
+          echo "Container running"
