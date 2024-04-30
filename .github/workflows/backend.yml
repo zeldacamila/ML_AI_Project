@@ -131,6 +131,6 @@ jobs:
             \$IMAGE
 
           EOF
-          
+
       - name: Echos
-        run: echo ${{ secrets.DB_PASSWORD_CD }}
+        run: echo "${{ secrets.DB_PASSWORD_CD }}"
