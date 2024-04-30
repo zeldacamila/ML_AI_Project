@@ -71,6 +71,7 @@ jobs:
 
       - name: Build, tag and push Docker image
         env:
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD_CD }}
           IMAGE_TAG: ${{ steps.commit.outputs.short }}
         uses: docker/build-push-action@v5
         with:
