@@ -32,7 +32,6 @@ jobs:
   #       run: pytest back-end-app/tests
 
   build-and-push:
-    needs: test
     runs-on: ubuntu-latest
 
     permissions:
