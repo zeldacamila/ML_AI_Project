@@ -29,7 +29,7 @@ def create_recommendation(
     )
 
 
-@rec_router.get("/user/{userId}")
+@rec_router.get("/user/{userId}", status_code=200)
 def read_user_recommendations(userId: str, db: Session = Depends(get_db)):
     recommendations = service.get_recommendations_by_user_id(db, user_id=userId).all()
     return {"userId": userId, "recommendations": recommendations}

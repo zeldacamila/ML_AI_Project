@@ -15,7 +15,7 @@ class RecommendationCreate(RecommendationBase):
 
 class Recommendation(RecommendationBase):
     id: int
-    creation_time: datetime
+    creation_date: datetime
     user_id: str
 
     class Config:
