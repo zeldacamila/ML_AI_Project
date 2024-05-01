@@ -6,10 +6,11 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-backend
-  DB_USERNAME: ${{ secrets.DB_USERNAME }} 
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_NAME: ${{ secrets.DB_NAME }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:
   test:
@@ -40,7 +41,7 @@ jobs:
       packages: write
 
     steps:
-      - name: echos
+      - name: Echos
         run: echo "${{ secrets.DB_PASSWORD }}"
       - name: Set short git commit SHA
         id: commit
@@ -71,7 +72,6 @@ jobs:
 
       - name: Build, tag and push Docker image
         env:
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD_CD }}
           IMAGE_TAG: ${{ steps.commit.outputs.short }}
         uses: docker/build-push-action@v5
         with:
