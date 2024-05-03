@@ -12,3 +12,13 @@ output "rds_postgres_address" {
   value       = module.postgres.db_instance_address
   description = "The hostname of the RDS Postgres instance"
 }
+
+output "s3_bucket_name" {
+  value       = module.s3.bucket_name
+  description = "The name of the S3 bucket"
+}
+
+output "s3_bucket_arn" {
+  value       = module.s3.bucket_arn
+  description = "The Amazon Resource Name (ARN) of the S3 bucket"
+}

@@ -39,3 +39,13 @@ variable "db_name" {
   description = "The name for the database"
   type = string
 }
+
+variable "canonical_id" {
+  description = "Canonical User ID of the AWS user"
+  type = string
+}
+
+variable "bucket_name" {
+  description = "Name for Bucket of S3"
+  type = string  
+}
