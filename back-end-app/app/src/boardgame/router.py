@@ -1,7 +1,10 @@
+#Router for BoardGame
 from fastapi import APIRouter
-from .schemas import GameParams
-from .service import normalize_data, predict_category, fetch_game_recommendations
 
+from .schemas import GameParams
+from .service import fetch_game_recommendations, normalize_data, predict_category
+
+#ApiRouter for BoardGame
 category_router = APIRouter()
 
 

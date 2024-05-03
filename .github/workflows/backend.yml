@@ -11,6 +11,9 @@ env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_NAME: ${{ secrets.DB_NAME }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+  MODEL_PATH: ${{ secrets.MODEL_PATH }}
+
 
 jobs:
   test:
@@ -127,6 +130,8 @@ jobs:
             -e DB_PORT=\${{ secrets.DB_PORT }} \\
             -e DB_NAME=\${{ secrets.DB_NAME }} \\
             -e OPENAI_API_KEY=\${{ secrets.OPENAI_API_KEY }} \\
+            -e BUCKET_NAME=\${{ secrets.BUCKET_NAME }} \\
+            -e MODEL_PATH=\${{ secrets.MODEL_PATH }} \\
             \$IMAGE
 
           EOF
