@@ -34,8 +34,6 @@ export const InputSelect = ( optionsProps: InputSelectOptions ) => {
                     menu: ( styles ) => {
                         return {
                             ...styles,
-                            maxHeight: "8em",
-                            overflowY: "auto"
                         }
                     },
                     option: ( styles ) => {

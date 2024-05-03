@@ -1,8 +1,11 @@
 @import "../../../styles/settings";
 
 .authLayout {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 4em 0em 4em 0em;
+    box-sizing: border-box;
     background-color: $color1;
 
     @include displayFlex(

@@ -6,6 +6,7 @@ import { AuthLayout } from "../../layout/authLayout";
 //* Components.
 import { Textfield } from "../../components/textfield/textfield";
 import { ErrorMessage } from "../../components/errorMessage/errorMessage";
+import { Loading } from "../../../components/loading/loading";
 
 //* Custom hook.
 import { useRegister } from "./useRegister";
@@ -14,11 +15,25 @@ export const Register = () => {
   
     const { 
         stateForm,
-        errorMessage, 
+        errorMessage,
+        isLoadingAuth, 
         onInputChange, 
         onHandleButtonRegister, 
         onHandleChangePageLogin 
     } = useRegister();
+
+    //* Pantalla de carga.
+    if ( !isLoadingAuth ) {
+
+        return (
+            <AuthLayout>
+
+                <Loading/>
+
+            </AuthLayout>
+        );
+
+    }
 
     return (
         <AuthLayout>

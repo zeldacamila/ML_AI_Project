@@ -17,7 +17,7 @@ export const useForm = <T>( initialStateForm: T ) => {
     }
 
     const onInputReset = (): void => {
-        setStateForm({...initialStateForm});
+        setStateForm({ ...initialStateForm });
     }
 
     return {

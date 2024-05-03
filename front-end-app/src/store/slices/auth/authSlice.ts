@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { StateAuthSlice } from "../../../types/interface";
 
-const initialState = {
+const initialState: StateAuthSlice = {
     status: 'no-authenticated', //checking, authenticated
-    user: {},
-    error: undefined
+    user: undefined,
+    isLoadingAuth: true,
 }
 
 export const authSlice = createSlice({
@@ -11,22 +12,22 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         onChecking: ( state ) => {
-            state.status = 'checking';
+            state.isLoadingAuth = false;
         },
         onLogin: ( state, { payload } ) => {
             state.status = 'authenticated';
             state.user = payload;
-            state.error = undefined;
+            state.isLoadingAuth = true;
         },
-        onLogout: ( state, { payload } ) => {
+        onLogout: ( state ) => {
             state.status = 'no-authenticated';
-            state.user = {};
-            state.error = payload;
+            state.user = undefined;
+            state.isLoadingAuth = true;
         },
         onResetAuth: ( state ) => {
             state.status = 'no-authenticated';
-            state.user = {};
-            state.error = undefined;
+            state.user = undefined;
+            state.isLoadingAuth = true;
         }
     }
 });

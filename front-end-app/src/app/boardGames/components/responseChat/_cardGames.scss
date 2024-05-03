@@ -1,0 +1,85 @@
+@import "../../../../styles/settings";
+
+.cardGames {
+    width: 12em;
+    height: 15em;
+    background-color: $color10;
+    border-radius: 10px;
+    padding: 0.9em;
+    box-sizing: border-box;
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        0
+    );
+
+    &__photo {
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+
+        @include displayFlex(
+            center,
+            center,
+            none,
+            none,
+            0
+        );
+
+        div {
+            width: 2.1em;
+            height: 2.1em;
+            border-radius: 50px;
+            padding: 0.5em;
+            box-sizing: border-box;
+            background-color: $color4;
+            cursor: pointer;
+
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+
+            @include displayFlex(
+                center,
+                center,
+                none,
+                none,
+                0
+            );
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__title {
+        width: 100%;
+        height: 20%;
+
+        @include displayFlex(
+            center,
+            center,
+            none,
+            none,
+            0
+        );
+
+        h1 {
+            font-family: $mainFont;
+            font-weight: 400;
+        }
+    }
+}

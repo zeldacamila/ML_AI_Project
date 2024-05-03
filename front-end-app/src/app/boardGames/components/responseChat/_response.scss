@@ -78,5 +78,17 @@
             color: $color6;
         }
 
+        &__cardGames {
+            width: 100%;
+
+            @include displayFlex(
+                center,
+                flex-start,
+                none,
+                none,
+                2em
+            );
+        }
+
     }
 }

@@ -4,8 +4,20 @@ import "./_header.scss";
 import logo from "../../../../images/logoBoardGames.png";
 import perfil from "../../../../images/IA.png";
 
+//* Custom hook.
+import { useAuthStore } from "../../../../hooks/useAuthStore";
+import { useBoardGameStore } from "../../../../hooks/useBoardGameStore";
+
 export const Header = () => {
   
+    const { user, onHandleResetAuth } = useAuthStore();
+    const { onHandleResetBoardGames } = useBoardGameStore();
+
+    const onHandleButtonLogOut = () => {
+        onHandleResetAuth();
+        onHandleResetBoardGames();
+    }
+
     return (
         <div className="header">
 
@@ -17,7 +29,7 @@ export const Header = () => {
                     <div>
                         <img src={ perfil } alt="" />
                     </div>
-                    <h2>Mateo Olaya</h2>
+                    <h2>{ user!.username }</h2>
                 </div>
 
                 { /* div que contiene el logo */ }
@@ -28,7 +40,7 @@ export const Header = () => {
 
                 { /* div que contiene el botón de cerrar sesión */ }
                 <div className="header__container__buttonLogOut">
-                    <button>
+                    <button onClick={ onHandleButtonLogOut }>
                         Log Out
                     </button>
                 </div>

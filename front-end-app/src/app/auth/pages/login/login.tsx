@@ -6,6 +6,7 @@ import { AuthLayout } from "../../layout/authLayout";
 //* Importing components.
 import { Textfield } from "../../components/textfield/textfield";
 import { ErrorMessage } from "../../components/errorMessage/errorMessage";
+import { Loading } from "../../../components/loading/loading";
 
 //* CustomHook.
 import { useLogin } from "./useLogin";
@@ -15,10 +16,24 @@ export const Login = () => {
     const { 
         stateForm,
         errorMessage,
+        isLoadingAuth,
         onInputChange, 
         onHandleButtonLogin, 
         onHandleButtonRegister 
     } = useLogin();
+
+    //* Pantalla de carga.
+    if ( !isLoadingAuth ) {
+
+        return (
+            <AuthLayout>
+
+                <Loading/>
+
+            </AuthLayout>
+        );
+
+    }
 
     return (
         <AuthLayout>

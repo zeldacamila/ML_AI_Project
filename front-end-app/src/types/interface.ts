@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { typeContextTextsChat } from "./type";
+import { typeContextTextsChat, typeRecommendation } from "./type";
 
 export interface TextFieldOptions {
     typeInput: string;
@@ -24,7 +24,7 @@ export interface InputSelectOptions {
 export interface BoardGamesSlice {
     isLoading: boolean;
     dataMachineLearningModel: {};
-    recommendationsGames: { title: string, date: Date }[] | [];
+    recommendationsGames: typeRecommendation[] | [];
     contentTextsChat: typeContextTextsChat[] | [];
     error: undefined | string;
 }
@@ -34,3 +34,13 @@ export type typeDataInputSelects = {
     name: string,
     data: { value: string, label: string }[], 
 }
+
+export interface StateAuthSlice {
+    status: string;
+    isLoadingAuth: boolean;
+    user?: {
+        username: string;
+        email: string;
+        id: string;
+    }; 
+} 

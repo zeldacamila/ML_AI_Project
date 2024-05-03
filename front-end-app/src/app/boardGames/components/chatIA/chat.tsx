@@ -10,9 +10,6 @@ export const ChatAI = () => {
   
     const { 
         contentTextsChat, 
-        onHandleSendTextChat, 
-        onInputChange, 
-        stateForm, 
     } = useChat();
 
     return (
@@ -32,9 +29,16 @@ export const ChatAI = () => {
                     )
                 }
 
+                <ResponseChat 
+                    key={ 1 } 
+                    content={ "Contenido de prueba" } 
+                    nameEntity={ "BoardGamesAI" } 
+                    type={ "IA" }
+                />
+
             </div>
 
-            { /* Div que contiene el botón e input para enviar mensaje */ }
+            { /* Div que contiene el botón e input para enviar mensaje
             <div className="chatAI__button">
 
                 <input 
@@ -50,6 +54,7 @@ export const ChatAI = () => {
                 </button>
                 
             </div>
+            */ }
 
         </div>
     );

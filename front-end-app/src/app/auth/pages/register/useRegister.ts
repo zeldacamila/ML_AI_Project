@@ -1,4 +1,5 @@
 //* Custom hook.
+import { useAuthStore } from "../../../../hooks/useAuthStore";
 import { useForm } from "../../../../hooks/useForm"
 import { useUiStore } from "../../../../hooks/useUiStore";
 
@@ -14,6 +15,8 @@ export const useRegister = () => {
         password: '',
         repeatPassword: ''
     });
+
+    const { onHandleRegisterUser, isLoadingAuth } = useAuthStore();
 
     const { 
         errorMessage,
@@ -31,7 +34,7 @@ export const useRegister = () => {
             return;
         }
 
-        //* Revisando si viene alguna propiedad vacía del formulario
+        //* Revisando si viene alguna propiedad vacía del formulario.
         const attributesForm = Object.keys(stateForm);
 
         for ( const key of attributesForm ) {
@@ -43,6 +46,12 @@ export const useRegister = () => {
 
         }
 
+        //* Aplicando proceso de registro usuario.
+        onHandleRegisterUser({ 
+            email: stateForm.email, 
+            password: stateForm.password, 
+            username: stateForm.username 
+        });
         
     }
 
@@ -56,6 +65,7 @@ export const useRegister = () => {
         //* Attributes.
         stateForm,
         errorMessage,
+        isLoadingAuth,
 
         //* Methods.
         onInputChange,
@@ -65,3 +75,4 @@ export const useRegister = () => {
     }
 
 }
+

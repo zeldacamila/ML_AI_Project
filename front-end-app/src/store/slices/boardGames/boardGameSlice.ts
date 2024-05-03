@@ -17,8 +17,22 @@ export const boardGameSlice = createSlice({
     reducers: {
         onUpdateContentChat: ( state, { payload } ) => {
             state.contentTextsChat = [ ...state.contentTextsChat, payload ];
-        }
+        },
+        onResetBoardGameSlice: ( state ) => {
+            state.isLoading = false;
+            state.dataMachineLearningModel = {};
+            state.recommendationsGames = [];
+            state.contentTextsChat = [];
+            state.error = undefined;
+        },
+        onLoadRecommendations: ( state, { payload } ) => {
+            state.recommendationsGames = [ ...state.recommendationsGames, ...payload ];
+        },
     }
 });
 
-export const { onUpdateContentChat } = boardGameSlice.actions;
+export const { 
+    onUpdateContentChat, 
+    onResetBoardGameSlice, 
+    onLoadRecommendations 
+} = boardGameSlice.actions;
