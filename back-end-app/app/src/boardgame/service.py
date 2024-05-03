@@ -6,6 +6,7 @@ from typing import List
 
 import boto3
 import botocore
+import botocore.exceptions
 import joblib
 import numpy as np
 from dotenv import load_dotenv
@@ -41,9 +42,15 @@ def load_model(bucket_name=bucket_name, model_path=model_path):
     try:
         # Get the object model from S3
         obj = s3.get_object(Bucket=bucket_name, Key=model_path)
-    except botocore.exceptions.NoSuchKey:
-        print(f"No such file {model_path} in bucket")
-        return None
+    except botocore.exceptions.ClientError as e:
+        # If a client error is thrown, then check that it was a 404 error.
+        # If it was a 404 error, then the bucket does not exist
+        error_code = int(e.response['Error']['Code'])
+        if error_code == 404:
+            print(f"No such file {model_path} in bucket.")
+            return None
+        else:
+            raise
     # Get the streaming body from the object
     streaming_body = obj["Body"]
 
