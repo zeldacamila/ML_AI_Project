@@ -26,11 +26,13 @@ model_path = os.getenv("MODEL_PATH")
 aws_access_key_id = os.getenv("AWS_ACCESS_KEY")
 aws_secret_key = os.getenv("AWS_SECRET_KEY")
 
+
 def load_model(
-        bucket_name=bucket_name, 
-        model_path=model_path, 
-        aws_access_key=aws_access_key_id, 
-        aws_secret_key=aws_secret_key):
+    bucket_name=bucket_name,
+    model_path=model_path,
+    aws_access_key=aws_access_key_id,
+    aws_secret_key=aws_secret_key,
+):
     """
     Load Model from S3
 
@@ -44,14 +46,16 @@ def load_model(
         Model ready for using it.
     """
     # Create a client for S3
-    s3 = boto3.client('s3', aws_access_key_id=aws_access_key, aws_secret_access_key=aws_secret_key)
+    s3 = boto3.client(
+        "s3", aws_access_key_id=aws_access_key, aws_secret_access_key=aws_secret_key
+    )
     try:
         # Get the object model from S3
         obj = s3.get_object(Bucket=bucket_name, Key=model_path)
     except botocore.exceptions.ClientError as e:
         # If a client error is thrown, then check that it was a 404 error.
         # If it was a 404 error, then the bucket does not exist
-        error_code = int(e.response['Error']['Code'])
+        error_code = int(e.response["Error"]["Code"])
         if error_code == 404:
             print(f"No such file {model_path} in bucket.")
             return None
@@ -209,5 +213,7 @@ def fetch_game_recommendations(game_category: str) -> List[str]:
         ]
         return boardgames_list
     except Exception as e:
-        print(f"Error while fetching recommendations from OpenAI for category {game_category}: {e}")
+        print(
+            f"Error while fetching recommendations from OpenAI for category {game_category}: {e}"
+        )
         return []
