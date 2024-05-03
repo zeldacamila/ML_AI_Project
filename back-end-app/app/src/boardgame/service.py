@@ -23,6 +23,8 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 bucket_name = os.getenv("BUCKET_NAME")
 model_path = os.getenv("MODEL_PATH")
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY")
+aws_secret_key = os.getenv("AWS_SECRET_KEY")
 
 def load_model(bucket_name=bucket_name, model_path=model_path):
     """

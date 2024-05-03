@@ -13,7 +13,8 @@ env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
   MODEL_PATH: ${{ secrets.MODEL_PATH }}
-
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
 jobs:
   test:
@@ -132,6 +133,8 @@ jobs:
             -e OPENAI_API_KEY=\${{ secrets.OPENAI_API_KEY }} \\
             -e BUCKET_NAME=\${{ secrets.BUCKET_NAME }} \\
             -e MODEL_PATH=\${{ secrets.MODEL_PATH }} \\
+            -e AWS_ACCESS_KEY=\${{ secrets.AWS_ACCESS_KEY }} \\
+            -e AWS_SECRET_KEY=\${{ secrets.AWS_SECRET_KEY }} \\
             \$IMAGE
 
           EOF
