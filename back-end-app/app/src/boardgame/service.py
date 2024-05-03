@@ -1,18 +1,21 @@
 # Logic for Boardgame (to interact with the ML trained model)
 from typing import List
 from .schemas import GameParams
+from dotenv import load_dotenv
 from openai import OpenAI
 import joblib
 import numpy as np
 import os
 import re
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+load_dotenv()
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def load_model():
     return joblib.load("app/ml_models/modelo_randomForest.pkl")
-
 
 # Función para normalizar los datos
 def normalize_data(game_params: GameParams):
@@ -66,9 +69,7 @@ def normalize_data(game_params: GameParams):
             year_published_norm,
         ]
     )
-
     return normalized_data
-
 
 def predict_category(normalized_data):
     model = load_model()

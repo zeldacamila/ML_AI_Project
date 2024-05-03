@@ -1,3 +1,4 @@
+#DD configuration
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -17,3 +18,4 @@ engine = create_engine(DATABASE_URL, echo=True)
 
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
+

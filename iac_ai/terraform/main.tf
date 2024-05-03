@@ -13,3 +13,4 @@ module "postgres" {
   password     = var.db_password
   db_name = var.db_name
 }
+

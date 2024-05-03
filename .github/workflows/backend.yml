@@ -41,8 +41,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Echos
-        run: echo "${{ secrets.DB_PASSWORD }}"
       - name: Set short git commit SHA
         id: commit
         uses: prompt/actions-commit-hash@v3
@@ -128,9 +126,7 @@ jobs:
             -e DB_HOST=\${{ secrets.DB_HOST }} \\
             -e DB_PORT=\${{ secrets.DB_PORT }} \\
             -e DB_NAME=\${{ secrets.DB_NAME }} \\
+            -e OPENAI_API_KEY=\${{ secrets.OPENAI_API_KEY }} \\
             \$IMAGE
 
           EOF
-
-      - name: Echos
-        run: echo "${{ secrets.DB_PASSWORD }}"

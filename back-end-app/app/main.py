@@ -8,10 +8,7 @@ from app.src.boardgame.router import category_router
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:5173",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,13 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 Base.metadata.create_all(bind=engine)  # Create the database tables
 
 app.include_router(user_router, prefix="/user")
 app.include_router(rec_router, prefix="/recommendations")
-app.include_router(category_router, prefix="/recommendations")
-
+app.include_router(category_router, prefix="/games")
 
 @app.get("/ping")
 async def ping():
