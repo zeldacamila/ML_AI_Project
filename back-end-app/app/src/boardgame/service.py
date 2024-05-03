@@ -26,7 +26,11 @@ model_path = os.getenv("MODEL_PATH")
 aws_access_key_id = os.getenv("AWS_ACCESS_KEY")
 aws_secret_key = os.getenv("AWS_SECRET_KEY")
 
-def load_model(bucket_name=bucket_name, model_path=model_path):
+def load_model(
+        bucket_name=bucket_name, 
+        model_path=model_path, 
+        aws_access_key=aws_access_key_id, 
+        aws_secret_key=aws_secret_key):
     """
     Load Model from S3
 
@@ -40,7 +44,7 @@ def load_model(bucket_name=bucket_name, model_path=model_path):
         Model ready for using it.
     """
     # Create a client for S3
-    s3 = boto3.client("s3")
+    s3 = boto3.client('s3', aws_access_key_id=aws_access_key, aws_secret_access_key=aws_secret_key)
     try:
         # Get the object model from S3
         obj = s3.get_object(Bucket=bucket_name, Key=model_path)
