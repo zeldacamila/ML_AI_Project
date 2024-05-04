@@ -99,7 +99,7 @@ jobs:
       - name: Deploy to EC2
 
         run: |
-          ssh -o StrictHostKeyChecking=no -l ubuntu 18.228.165.95 <<EOF
+          ssh -o StrictHostKeyChecking=no -l ubuntu 15.228.156.203 <<EOF
 
           IMAGE=\$(echo ghcr.io/\${{ github.repository }}-backend:\${{ steps.commit.outputs.short }} | tr '[:upper:]' '[:lower:]')
 
