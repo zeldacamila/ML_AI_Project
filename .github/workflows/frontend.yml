@@ -25,7 +25,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "18"
+          node-version: "18.18.0"
 
       - name: Install dependencies
         run: npm install
@@ -50,6 +50,19 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.18.0"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./front-end-app
+
+      - name: Build front-end application
+        run: npm run build
+        working-directory: ./front-end-app
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
