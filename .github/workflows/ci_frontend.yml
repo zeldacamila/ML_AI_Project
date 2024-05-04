@@ -7,9 +7,31 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
+  PORT: ${{ secrets.PORT }}
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./front-end-app
+
+      - name: Run tests
+        run: npm run test:watch
+        working-directory: ./front-end-app
+
   build-and-push-image:
+    needs: test
     runs-on: ubuntu-latest
 
     permissions:
