@@ -213,7 +213,7 @@ def fetch_game_recommendations(game_category: str) -> List[str]:
         boardgames_list = [
             re.sub(r"^\d+\.\s*", "", game) for game in boardgames_list if game.strip()
         ]
-        return {"type": "AI_response", "boardgame": boardgames_list}
+        return {"type": "AI_response", "content": boardgames_list}
     except Exception as e:
         print(
             f"Error while fetching recommendations from OpenAI for category {game_category}: {e}"
