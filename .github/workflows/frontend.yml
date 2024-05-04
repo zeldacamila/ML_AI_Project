@@ -7,6 +7,11 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  DB_PORT: ${{ secrets.DB_PORT }}
   PORT: ${{ secrets.PORT }}
 
 jobs:
@@ -119,11 +124,6 @@ jobs:
           echo "Running container \$IMAGE"
 
           sudo docker run -d -p 5137:5137 \\
-            -e DB_USERNAME=\${{ secrets.DB_USERNAME }} \\
-            -e DB_PASSWORD=\${{ secrets.DB_PASSWORD }} \\
-            -e DB_HOST=\${{ secrets.DB_HOST }} \\
-            -e DB_PORT=\${{ secrets.DB_PORT }} \\
-            -e DB_NAME=\${{ secrets.DB_NAME }} \\
             -e PORT=\${{ secrets.PORT }} \\
             \$IMAGE
             
