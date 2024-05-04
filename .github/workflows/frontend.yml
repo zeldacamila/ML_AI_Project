@@ -1,15 +1,37 @@
-name: CI/CD Pipeline Frontend
+name: CI/CD Frontend
 
 on:
   push:
-    branches: [main, dev-frontend]
+    branches:
+      - dev-frontend
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
   PORT: ${{ secrets.PORT }}
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./front-end-app
+
+      - name: Run tests
+        run: npm run test
+        working-directory: ./front-end-app
+
   build-and-push:
+    needs: test
     runs-on: ubuntu-latest
 
     permissions:
@@ -43,7 +65,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             ${{ steps.commit.outputs.short }}
-
       - name: Build, tag and push Docker image
         env:
           IMAGE_TAG: ${{ steps.commit.outputs.short }}
@@ -78,7 +99,7 @@ jobs:
 
           # Stop and remove the running container
 
-          CONTAINER_ID=\$(sudo docker ps --filter "publish=3000" -q)
+          CONTAINER_ID=\$(sudo docker ps --filter "publish=5137" -q)
 
           echo "Stopping container \$CONTAINER_ID"
 
@@ -97,7 +118,7 @@ jobs:
           # Run the new container with environment variables
           echo "Running container \$IMAGE"
 
-          sudo docker run -d -p 3000:3000 \\
+          sudo docker run -d -p 5137:5137 \\
             -e DB_USERNAME=\${{ secrets.DB_USERNAME }} \\
             -e DB_PASSWORD=\${{ secrets.DB_PASSWORD }} \\
             -e DB_HOST=\${{ secrets.DB_HOST }} \\
@@ -105,5 +126,5 @@ jobs:
             -e DB_NAME=\${{ secrets.DB_NAME }} \\
             -e PORT=\${{ secrets.PORT }} \\
             \$IMAGE
-
+            
           EOF
