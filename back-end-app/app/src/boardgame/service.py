@@ -95,7 +95,9 @@ def normalize_data(game_params: GameParams):
     """
     try:
         # Validate the input data
-        game_params = GameParams(**game_params)
+        if not isinstance(game_params, GameParams):
+            print(f"Invalid game parameters: {game_params}")
+            return None
     except ValidationError as e:
         print(f"Invalid game parameters: {e}")
         return None
