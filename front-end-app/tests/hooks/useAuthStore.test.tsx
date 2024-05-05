@@ -23,6 +23,7 @@ const getMockStore = ( initialState: StateAuthSlice ) => {
             auth: { ...initialState },
             boardGames: {
                 isLoading: false,
+                isLoadingRecommendation: false,
                 dataMachineLearningModel: {}, 
                 recommendationsGames: [], 
                 contentTextsChat: [],
