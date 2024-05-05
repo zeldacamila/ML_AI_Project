@@ -14,28 +14,28 @@ env:
   PORT: ${{ secrets.PORT }}
 
 jobs:
-    test:
-      runs-on: ubuntu-latest
-  
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
-  
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: "18.18.0"
-  
-        - name: Install dependencies
-          run: npm install
-          working-directory: ./front-end-app
-  
-        - name: Run tests
-          run: npm run test
-          working-directory: ./front-end-app
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.18.0"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./front-end-app
+
+      - name: Run tests
+        run: npm run test
+        working-directory: ./front-end-app
 
   build-and-push:
-        needs: test
+    needs: test
     runs-on: ubuntu-latest
 
     permissions:
