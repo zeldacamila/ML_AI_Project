@@ -1,7 +1,7 @@
 import { useAuthStore } from "../../../../hooks/useAuthStore";
 import { useBoardGameStore } from "../../../../hooks/useBoardGameStore";
 
-export const useResponse = () => {
+export const useResponse = ( content: string[] | string ) => {
   
     //* Attributes.
     const { onHandleSaveRecommendation } = useBoardGameStore();
@@ -10,13 +10,17 @@ export const useResponse = () => {
     //* Methods.
     const onButtonSaveRecommendation = () => {
 
-        const dataRecommendation = {
-            description: "1. Catan: Juego de Tronos\n2. Zombicide: Black Plague\n3. Blood Rage\n4. Star Realms\n5. 7 Wonders: Duel",
-            title: "Juego test 5"
-        };
+       if ( Array.isArray( content ) ) {
 
-        //* Guardando recomendación en la base de datos y el arreglo del front end.
-        onHandleSaveRecommendation( dataRecommendation, user!.id );
+            const dataRecommendation = {
+                description: content.join("-"),
+                title: `${content[0]}-${ content[1] }`,
+            };
+
+            //* Guardando recomendación en la base de datos y el arreglo del front end.
+            onHandleSaveRecommendation( dataRecommendation, user!.id );
+
+       }
 
     }
 

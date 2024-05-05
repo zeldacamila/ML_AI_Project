@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 
 interface ServerAppOptions {
     port: number;
@@ -21,6 +22,7 @@ export class ServerApp {
     async start() {
 
         //* Middlewares.
+        this.app.use( cors() );
 
         //* Public folder for SPA.
         this.app.use( express.static( this.publicPath ) );

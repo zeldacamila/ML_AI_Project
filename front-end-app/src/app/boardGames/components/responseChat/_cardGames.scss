@@ -1,8 +1,8 @@
 @import "../../../../styles/settings";
 
 .cardGames {
-    width: 12em;
-    height: 15em;
+    width: 10em;
+    height: 12em;
     background-color: $color10;
     border-radius: 10px;
     padding: 0.9em;
@@ -80,6 +80,7 @@
         h1 {
             font-family: $mainFont;
             font-weight: 400;
+            font-size: 0.8em;
         }
     }
 }

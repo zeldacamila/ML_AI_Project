@@ -23,16 +23,11 @@ export interface InputSelectOptions {
 
 export interface BoardGamesSlice {
     isLoading: boolean;
+    isLoadingRecommendation: boolean;
     dataMachineLearningModel: {};
     recommendationsGames: typeRecommendation[] | [];
     contentTextsChat: typeContextTextsChat[] | [];
     error: undefined | string;
-}
-
-export type typeDataInputSelects = { 
-    title: string, 
-    name: string,
-    data: { value: string, label: string }[], 
 }
 
 export interface StateAuthSlice {
@@ -43,4 +38,10 @@ export interface StateAuthSlice {
         email: string;
         id: string;
     }; 
-} 
+}
+
+export type typeDataInputSelects = { 
+    title: string, 
+    name: string,
+    data: { value: string, label: string }[], 
+}

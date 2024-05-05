@@ -13,3 +13,9 @@ module "postgres" {
   password     = var.db_password
   db_name = var.db_name
 }
+
+module "s3" {
+  source = "./modules/aws_s3"
+  bucket_name = var.bucket_name
+  canonical_id = var.canonical_id
+}

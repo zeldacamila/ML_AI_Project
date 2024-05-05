@@ -6,10 +6,14 @@ import { typeDataInputSelects } from "../../../../types/interface";
 
 //* Custom hook.
 import { useForm } from "../../../../hooks/useForm";
+import { useBoardGameStore } from "../../../../hooks/useBoardGameStore";
+import { useAuthStore } from "../../../../hooks/useAuthStore";
 
 export const useViewEnterData = () => {
   
     //* Attributes.
+    const { onHandleSendDataModelAI, onHandleAddResponseChatAI } = useBoardGameStore();
+    
     const dataInputSelects: typeDataInputSelects[] = [
         InputSelect.convertFormatData( "Máximo jugadores", "max_players" ),
         InputSelect.convertFormatData("Mínimo jugadores", "min_players"),
@@ -32,9 +36,21 @@ export const useViewEnterData = () => {
         youngest_player_age: 0
     });
 
+    const { user } = useAuthStore();
+
     //* Methods.
     const onHandleStart = () => {
-        console.log( stateForm );
+
+        //* Añadiendo respuesta del usuario en el chatAI.
+        onHandleAddResponseChatAI({
+            content: "I want to know board games according to my preferences.",
+            nameEntity: user!.username,
+            type: "user"
+        });
+
+        //* Enviando data al modelo de aprendizaje.
+        onHandleSendDataModelAI( stateForm );
+
     }
 
     return {

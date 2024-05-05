@@ -3,13 +3,16 @@ import { RootState } from "../store/stores";
 
 //* Actions Slice.
 import { 
+    onErrorBoardGame,
     onLoadRecommendations,
+    onLoadingBoardGames,
+    onLoadingRecommendation,
     onResetBoardGameSlice, 
     onUpdateContentChat 
 } from "../store/slices/boardGames/boardGameSlice";
 
 //* Types.
-import { typeContextTextsChat, typeRecommendation } from "../types/type";
+import { typeContextTextsChat, typeDataMachineLearning, typeRecommendation } from "../types/type";
 
 //* API.
 import boardGamesApi from "../api/boardGamesApi";
@@ -22,14 +25,41 @@ export const useBoardGameStore = () => {
         dataMachineLearningModel, 
         recommendationsGames,
         error, 
-        isLoading 
+        isLoading,
+        isLoadingRecommendation, 
     } = useSelector( (state: RootState) => state.boardGames );
     
     const dispatch = useDispatch();
 
     //* Methods.
-    const onHandleAddResponseChat = ( content: typeContextTextsChat ): void => {
+    const onHandleSendDataModelAI = async( dataModelAI: typeDataMachineLearning ): Promise<void> => {
+        
+        dispatch( onLoadingBoardGames() );
+
+        try {
+            
+            //* Consumiendo endpoint para enviar datos al modelo y la IA.
+            const { data } = await boardGamesApi.post( '/games/recommend-boardgames', dataModelAI );
+
+            //* Acomodando los datos que envía la IA desde el backend.
+            const dataResponseAI = {
+                type: data.type, 
+                nameEntity: "BoardGamesAI", 
+                content: data.content,
+            };
+
+            dispatch( onUpdateContentChat( dataResponseAI ) );
+
+        } catch (error) {
+            dispatch( onErrorBoardGame() );
+        }
+
+    }
+
+    const onHandleAddResponseChatAI = ( content: typeContextTextsChat ): void => {
+
         dispatch( onUpdateContentChat( content ) );
+
     }
 
     const onHandleResetBoardGames = (): void => {
@@ -42,6 +72,8 @@ export const useBoardGameStore = () => {
 
     const onHandleSaveRecommendation = async( recommendation: typeRecommendation, idUser: string ) => {
         
+        dispatch( onLoadingRecommendation() );
+
         try {
             
             //* Consumiendo endpoint para guardar recomendación.
@@ -51,7 +83,7 @@ export const useBoardGameStore = () => {
             dispatch( onLoadRecommendations( [data] ) );
 
         } catch (error) {
-            
+            dispatch( onErrorBoardGame() );
         }
 
     }
@@ -62,13 +94,15 @@ export const useBoardGameStore = () => {
         dataMachineLearningModel,
         error,
         isLoading,
+        isLoadingRecommendation,
         recommendationsGames,
 
         //* Methods.
-        onHandleAddResponseChat,
+        onHandleSendDataModelAI,
         onHandleResetBoardGames,
         onHandleLoadRecommendations,
         onHandleSaveRecommendation,
+        onHandleAddResponseChatAI
     }
 
 }

@@ -5,11 +5,13 @@ import { ResponseChat } from "../responseChat/response";
 
 //* Custom hook.
 import { useChat } from "./useChat";
+import { Loading } from "../../../components/loading/loading";
 
 export const ChatAI = () => {
   
     const { 
-        contentTextsChat, 
+        contentTextsChat,
+        isLoading, 
     } = useChat();
 
     return (
@@ -19,7 +21,9 @@ export const ChatAI = () => {
             <div className="chatAI__chat">
 
                 {
-                    contentTextsChat.map( ({ content, nameEntity, type }) => 
+                    ( isLoading )
+                    ? <Loading/>
+                    : contentTextsChat.map( ({ content, nameEntity, type }) => 
                         <ResponseChat 
                             key={ type } 
                             content={ content } 
@@ -29,34 +33,28 @@ export const ChatAI = () => {
                     )
                 }
 
-                <ResponseChat 
-                    key={ 1 } 
-                    content={ "Contenido de prueba" } 
-                    nameEntity={ "BoardGamesAI" } 
-                    type={ "IA" }
-                />
-
             </div>
-
-            { /* Div que contiene el botón e input para enviar mensaje
-            <div className="chatAI__button">
-
-                <input 
-                    type="text"
-                    name="text"
-                    value={ stateForm.text }
-                    onChange={ onInputChange } 
-                    placeholder="Ask from boardGamesAI"
-                />
-
-                <button onClick={ onHandleSendTextChat }>
-                    Send
-                </button>
-                
-            </div>
-            */ }
 
         </div>
     );
 
 }
+
+
+/* Div que contiene el botón e input para enviar mensaje
+<div className="chatAI__button">
+
+    <input 
+        type="text"
+        name="text"
+        value={ stateForm.text }
+        onChange={ onInputChange } 
+        placeholder="Ask from boardGamesAI"
+    />
+
+    <button onClick={ onHandleSendTextChat }>
+        Send
+    </button>
+    
+</div>
+*/ 

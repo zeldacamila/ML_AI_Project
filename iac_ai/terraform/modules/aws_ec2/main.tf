@@ -95,7 +95,7 @@ resource "aws_security_group" "ec2_sg" {
 resource "aws_instance" "ec2" {
 
   ami                         = data.aws_ami.ubuntu.id
-  instance_type               = "t2.micro"
+  instance_type               = "t2.medium"
   associate_public_ip_address = true
   key_name                    = var.key_name
   security_groups             = [aws_security_group.ec2_sg.name]
