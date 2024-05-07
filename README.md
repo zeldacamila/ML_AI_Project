@@ -108,7 +108,7 @@ To run de backend part of the project, you can follow the next steps:
 
 ### Step 1: Open another terminal
 
-After running the frontend part, you can open a new terminal to run the backend.
+After running the frontend part, you can open a new terminal to run the backend. After, you must enter the path of the folder where the backend project is located.
 
 ```
 cd back-end-app
