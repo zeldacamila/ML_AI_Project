@@ -20,7 +20,8 @@ export const useRegister = () => {
 
     const { 
         errorMessage,
-        onHandleOpenErrorMessage 
+        onHandleOpenErrorMessage,
+        onHandleCloseErrorMessage, 
     } = useUiStore();
 
     const navigate = useNavigate();
@@ -56,6 +57,8 @@ export const useRegister = () => {
     }
 
     const onHandleChangePageLogin = (): void => {
+        onHandleCloseErrorMessage();
+
         navigate("/auth/login", {
             replace: true
         });

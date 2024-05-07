@@ -10,7 +10,7 @@ export const useLogin = () => {
     
     //* Attributes.
     const { stateForm, onInputChange } = useForm({ email: '', password: '' });
-    const { errorMessage, onHandleOpenErrorMessage } = useUiStore();
+    const { errorMessage, onHandleOpenErrorMessage, onHandleCloseErrorMessage } = useUiStore();
     const { onHandleLoginUser, isLoadingAuth } = useAuthStore();
     const navigate = useNavigate();
 
@@ -35,6 +35,8 @@ export const useLogin = () => {
     }
 
     const onHandleButtonRegister = (): void => {
+        onHandleCloseErrorMessage();
+
         navigate("/auth/register", {
             replace: true
         });

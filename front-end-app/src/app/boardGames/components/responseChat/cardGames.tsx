@@ -2,7 +2,10 @@ import "./_cardGames.scss";
 
 //* Importing content multimedia.
 import iconShop from "../../../../images/compra.png";
-import iconImagenBroken from "../../../../images/ImageBroken.png";
+//import iconImagenBroken from "../../../../images/ImageBroken.png";
+
+//* Custom hook.
+import { useCardGames } from "./useCardGames";
 
 interface CardGamesOptions {
     nameGame: string;
@@ -11,6 +14,7 @@ interface CardGamesOptions {
 export const CardGames = ( options: CardGamesOptions ) => {
   
     const { nameGame } = options;
+    const { imageBoardGame } = useCardGames();
 
     return (
         <div className="cardGames">
@@ -19,7 +23,7 @@ export const CardGames = ( options: CardGamesOptions ) => {
                 <div>
                     <img src={ iconShop } alt="" />
                 </div>
-                <img src={ iconImagenBroken } alt="" />
+                <img src={ imageBoardGame } alt="" />
             </div>
 
             <div className="cardGames__title">
