@@ -1,5 +1,5 @@
-# Logic for Users, It is similiar as CRUD but only for USERS
-from .models import User
+# Logic for Users, It is similar as CRUD but only for USERS
+from app.src.models import User
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
@@ -27,3 +27,7 @@ def create_user(db: Session, user: UserCreate):
 
 def get_user_by_email(db: Session, user_email: str):
     return db.query(User).filter(User.email == user_email).first()
+
+
+def get_user_by_name(db: Session, user_name: str):
+    return db.query(User).filter(User.username == user_name).first()

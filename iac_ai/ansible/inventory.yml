@@ -1,0 +1,2 @@
+[Ubuntu_Server]
+ec2 ansible_host=15.228.156.203

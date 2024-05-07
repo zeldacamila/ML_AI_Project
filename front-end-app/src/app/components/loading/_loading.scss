@@ -1,0 +1,21 @@
+@import "../../../styles/settings";
+
+.loading {
+    width: 100%;
+    max-width: 25em;
+
+    @include displayFlex(
+        center,
+        center,
+        column,
+        none,
+        1em
+    );
+
+    h1 {
+        font-family: $mainFont;
+        font-weight: 500;
+        font-size: 1.4em;
+        color: $color2
+    }
+}

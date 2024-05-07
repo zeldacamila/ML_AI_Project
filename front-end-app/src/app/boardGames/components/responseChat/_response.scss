@@ -1,0 +1,94 @@
+@import "../../../../styles/settings";
+
+.responseChat {
+    width: 100%;
+
+    @include displayFlex(
+        flex-start,
+        center,
+        none,
+        none,
+        0.8em
+    );
+
+    &__photoButton {
+
+        @include displayFlex(
+            center,
+            center,
+            column,
+            none,
+            0.5em
+        );
+
+        div {
+            width: 2.8em;
+            height: 2.9em;
+            border-radius: 5px;
+            border: 1px solid $color3;
+            background-color: $color10;
+            padding: 0.5em;
+            box-sizing: border-box;
+
+            @include displayFlex(
+                center,
+                center,
+                none,
+                none,
+                0
+            );
+
+            img {
+                width: 90%;
+                object-fit: cover;
+            }
+        }
+
+        div:nth-child(2) {
+            cursor: pointer;
+
+            img {
+                width: 75%;
+            }
+        }
+
+    }
+
+    &__textContent {
+        width: 100%;
+        font-family: $mainFont;
+        
+        @include displayFlex(
+            flex-start,
+            center,
+            column,
+            none,
+            0.5em
+        );
+
+        h1 {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: $color2;
+        }
+
+        p {
+            font-size: 0.85em;
+            font-weight: 400;
+            color: $color6;
+        }
+
+        &__cardGames {
+            width: 100%;
+
+            @include displayFlex(
+                center,
+                flex-start,
+                none,
+                none,
+                2em
+            );
+        }
+
+    }
+}

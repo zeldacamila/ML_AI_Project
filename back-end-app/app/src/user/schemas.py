@@ -1,4 +1,4 @@
-#Pydantic models for validation of data for users
+# Pydantic models for validation of data for users
 from pydantic import BaseModel
 
 from ..recommendation.schemas import Recommendation
@@ -20,7 +20,7 @@ class User(UserBase):
     class Config:
         from_attributes = True
 
+
 class UserLogin(BaseModel):
     email: str
-    password : str
-
+    password: str
