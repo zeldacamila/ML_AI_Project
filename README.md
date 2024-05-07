@@ -101,3 +101,47 @@ With the following script you can build the production build and run the server:
 ```
 npm run start
 ```
+
+# Stage Backend
+
+To run de backend part of the project, you can follow the next steps:
+
+### Step 1: Open another terminal
+
+After running the frontend part, you can open a new terminal to run the backend.
+
+```
+cd back-end-app
+```
+
+### Step 2: Create a virtual environment and Install project dependencies
+
+```
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r requirements.txt
+```
+
+### Step 3: Setup the environment variables
+
+To run this project, you will need to add the following environment variables to your .env file in the back-end-app directory. Do not include sensitive information directly in your project files or documentation.
+
+```
+DB_NAME='your_postgres_db_name'
+DB_USERNAME='your_postgres_user'
+DB_PASSWORD='your_postgres_password'
+DB_HOST='your_postgres_host'
+DB_PORT='your_postgres_port'
+OPENAI_API_KEY='your_openai_api_key'
+MODEL_PATH='your_path_to_your_ml_model'
+```
+
+### Step 4: Usage
+
+Start the server:
+
+```
+uvicorn app.main:app --reload
+```
+
+Access http://localhost:8000/docs# in your browser to interact with the backend endpoints.
